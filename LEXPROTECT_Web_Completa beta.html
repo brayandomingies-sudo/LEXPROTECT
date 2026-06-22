@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEXPROTECT · Membresía Jurídica Preventiva · Panamá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+:root{
+  --navy:#0D1F3C; --navy2:#0A1829; --navy3:#122340; --black:#060B14;
+  --gold:#C9A84C; --gold2:#E6C977;
+  --white:#FFFFFF; --muted:#8A9BB0;
+  --bdr:rgba(201,168,76,0.22); --bdr2:rgba(255,255,255,0.09);
+  --red:#9C3A3A; --green:#3A7A5A;
+  --vh:100vh;
+  --header-h:96px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--white);background:var(--black);line-height:1.6;overflow-x:hidden;}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}
+}
+
+/* ══ UTIL BAR ══ */
+.util-bar{background:#040810;padding:0.42rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:0.7rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.util-left{display:flex;gap:1.6rem;}
+.util-left a{color:rgba(255,255,255,0.45);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s;}
+.util-left a:hover{color:var(--gold);}
+.util-left i{color:var(--gold);font-size:13px;}
+.util-right{color:rgba(255,255,255,0.26);display:flex;align-items:center;gap:5px;font-size:0.67rem;letter-spacing:0.06em;}
+.util-right i{color:var(--gold);font-size:12px;}
+
+/* ══ NAV ══ */
+.nav{background:transparent;padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:background .35s,padding .35s,border-color .35s;border-bottom:1px solid transparent;}
+.nav.scrolled{background:rgba(6,11,20,0.88);backdrop-filter:blur(10px);padding:0.85rem 2.5rem;border-bottom:1px solid var(--bdr);}
+.brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.22rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;line-height:1;}
+.brand small{display:block;font-family:'Inter',sans-serif;font-size:0.54rem;color:rgba(255,255,255,0.32);letter-spacing:0.12em;text-transform:uppercase;margin-top:3px;font-weight:400;}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.btn-nav{background:var(--gold)!important;color:var(--navy2)!important;padding:0.4rem 1.1rem!important;border-radius:2px;font-weight:700!important;letter-spacing:0.08em;}
+.nav-mobile-btn{display:none;background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;}
+
+/* ══ SCREEN SYSTEM (cinematic full-bleed) ══ */
+.screen{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:6rem 2rem;}
+.screen-bg{position:absolute;inset:0;z-index:0;}
+.screen-bg::after{content:'';position:absolute;inset:0;}
+.screen-content{position:relative;z-index:2;max-width:920px;display:flex;flex-direction:column;align-items:center;}
+
+.eyebrow-c{color:var(--gold);font-size:0.64rem;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;margin-bottom:1.6rem;display:flex;align-items:center;gap:0.8rem;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease;}
+.eyebrow-c::before,.eyebrow-c::after{content:'';width:26px;height:1px;background:var(--gold);}
+.screen-h{font-family:'Playfair Display',serif;font-weight:700;color:#fff;line-height:1.08;margin-bottom:1.5rem;opacity:0;transform:translateY(22px);transition:opacity 1s ease .12s,transform 1s ease .12s;}
+.screen-h em{font-style:italic;color:var(--gold);}
+.screen-h.xl{font-size:clamp(2.4rem,6vw,5.2rem);}
+.screen-h.lg{font-size:clamp(2rem,4.6vw,3.6rem);}
+.screen-sub{color:var(--muted);font-size:clamp(0.95rem,1.4vw,1.15rem);line-height:1.7;max-width:620px;margin-bottom:2.4rem;opacity:0;transform:translateY(18px);transition:opacity 1s ease .24s,transform 1s ease .24s;font-weight:300;}
+
+.screen.is-visible .eyebrow-c{opacity:1;transform:translateY(0);}
+.screen.is-visible .screen-h{opacity:1;transform:translateY(0);}
+.screen.is-visible .screen-sub{opacity:1;transform:translateY(0);}
+.screen.is-visible .screen-cta{opacity:1;transform:translateY(0);}
+.screen.is-visible .screen-stats{opacity:1;transform:translateY(0);}
+
+.screen-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(18px);transition:opacity 1s ease .36s,transform 1s ease .36s;}
+.btn-p{background:var(--gold);color:var(--navy2);padding:0.85rem 2rem;border:none;border-radius:2px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .25s,transform .2s,letter-spacing .25s;}
+.btn-p:hover{background:var(--gold2);transform:translateY(-2px);letter-spacing:0.13em;}
+.btn-o{background:transparent;color:rgba(255,255,255,0.7);padding:0.85rem 2rem;border:1px solid rgba(255,255,255,0.25);border-radius:2px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.05em;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .25s,color .25s;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);}
+
+/* reveal button (chevron) */
+.btn-reveal{margin-top:3rem;background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;transition:color .25s;opacity:0;transform:translateY(14px);}
+.screen.is-visible .btn-reveal{opacity:1;transform:translateY(0);transition:opacity 1s ease .5s,transform 1s ease .5s,color .25s;}
+.btn-reveal:hover{color:var(--gold);}
+.btn-reveal i{font-size:20px;animation:bob 2.2s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+.btn-reveal.open i{animation:none;transform:rotate(180deg);}
+
+/* scroll cue (only on hero) */
+.scroll-cue{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.35);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0;transition:opacity 1.2s ease .9s;}
+.screen.is-visible .scroll-cue{opacity:1;}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(to bottom,var(--gold),transparent);position:relative;overflow:hidden;}
+.scroll-cue .line::after{content:'';position:absolute;top:-34px;left:0;width:100%;height:34px;background:var(--gold);animation:scrolldown 1.8s ease-in-out infinite;}
+@keyframes scrolldown{0%{top:-34px;}100%{top:34px;}}
+
+/* detail panel (expandable, holds dense content) */
+.detail-panel{position:relative;z-index:2;width:100%;max-width:1120px;max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1);margin-top:0;}
+.detail-panel.open{max-height:4000px;margin-top:2.5rem;}
+.detail-inner{background:rgba(6,11,20,0.55);backdrop-filter:blur(14px);border:1px solid var(--bdr2);border-radius:14px;padding:2.4rem 2.2rem;text-align:left;}
+
+/* gold rule */
+.gold-rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.5;}
+
+/* generic section label / heading used inside panels */
+.lbl{color:var(--gold);font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;}
+.lbl::before{content:'';width:14px;height:1px;background:var(--gold);}
+.lbl-c{justify-content:center;} .lbl-c::before{display:none;}
+.h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.1vw,1.9rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:0.55rem;}
+.sub{color:var(--muted);font-size:0.88rem;line-height:1.78;max-width:580px;margin-bottom:1.8rem;}
+.tc{text-align:center;} .sub-c{margin:0 auto 1.8rem;}
+.sec-divider{height:1px;background:rgba(255,255,255,0.07);margin:2.2rem 0 1.8rem;}
+.note-bar{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.16);border-radius:5px;padding:0.5rem 1rem;display:inline-block;margin-top:0.85rem;}
+.note-bar span{font-size:0.71rem;color:var(--muted);}
+.note-bar strong{color:var(--gold);}
+#site-header{position:fixed;top:0;left:0;right:0;z-index:300;}
+.screen:first-of-type{padding-top:calc(var(--header-h) + 1.5rem);}
+</style>
+<style id="component-styles">
+/* ── COBERTURA TABS ── */
+.cov-tabs{display:flex;gap:0;border-bottom:1px solid var(--bdr2);margin-bottom:1.4rem;overflow-x:auto;}
+.cov-tab{background:none;border:none;border-bottom:2px solid transparent;padding:0.75rem 1.3rem;font-family:'Inter',sans-serif;font-size:0.73rem;font-weight:600;color:rgba(255,255,255,0.38);letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .2s;margin-bottom:-1px;}
+.cov-tab:hover{color:rgba(255,255,255,0.7);}
+.cov-tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.cov-panel{display:none;}
+.cov-panel.on{display:flex;flex-direction:column;gap:7px;}
+.cov-acc{border:1px solid rgba(201,168,76,0.15);border-radius:7px;overflow:hidden;background:rgba(255,255,255,0.018);}
+.cov-acc-h{width:100%;background:none;border:none;padding:0.95rem 1.2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:1rem;transition:background .2s;}
+.cov-acc-h:hover{background:rgba(255,255,255,0.025);}
+.cov-acc-h.open{background:rgba(201,168,76,0.055);}
+.cov-acc-left{display:flex;flex-direction:column;gap:2px;}
+.cov-ent{font-size:0.58rem;color:var(--gold2);text-transform:uppercase;letter-spacing:0.13em;font-weight:700;}
+.cov-title{font-size:0.88rem;font-weight:700;color:#fff;}
+.cov-acc-icon{color:var(--gold);font-size:16px;flex-shrink:0;transition:transform .25s;}
+.cov-acc-h.open .cov-acc-icon{transform:rotate(45deg);}
+.cov-acc-body{display:none;padding:0 1.2rem 1.05rem;}
+.cov-acc-body.open{display:block;}
+.cov-desc{font-size:0.8rem;color:rgba(255,255,255,0.48);line-height:1.72;margin-bottom:9px;}
+.cov-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.ctag{background:rgba(201,168,76,0.1);color:var(--gold);font-size:0.6rem;font-weight:600;padding:3px 8px;border-radius:3px;}
+.ctag.off{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.22);}
+
+/* ── PLAN CARDS ── */
+.plan-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:2rem;}
+.pc{background:rgba(255,255,255,0.025);border:1.5px solid var(--bdr2);border-radius:10px;padding:1.35rem 1rem;display:flex;flex-direction:column;gap:0.4rem;position:relative;transition:border-color .2s,transform .15s;cursor:pointer;}
+.pc:hover{border-color:var(--bdr);transform:translateY(-2px);}
+.pc.feat{border:1.5px solid var(--gold);}
+.pc-badge{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy2);font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap;}
+.pc-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--gold);}
+.pc-emp{font-size:0.62rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;text-transform:uppercase;}
+.pc-price{font-size:1.65rem;font-weight:700;color:#fff;line-height:1;margin:0.3rem 0 0.1rem;}
+.pc-note{font-size:0.63rem;color:rgba(255,255,255,0.26);}
+.pc-dgi{background:rgba(201,168,76,0.09);border-radius:4px;padding:4px 7px;text-align:center;margin:0.22rem 0;}
+.pc-dgi span{font-size:0.58rem;color:var(--gold);font-weight:600;letter-spacing:0.05em;}
+.pc-dgi strong{display:block;font-size:0.84rem;font-weight:700;color:var(--gold);}
+.pc-divider{height:1px;background:rgba(255,255,255,0.07);margin:0.22rem 0;}
+.pc-fi{font-size:0.72rem;color:rgba(255,255,255,0.5);display:flex;align-items:flex-start;gap:5px;line-height:1.4;padding:0.07rem 0;}
+.pc-fi i{color:var(--gold);font-size:11px;flex-shrink:0;margin-top:2px;}
+.pc-lit{font-size:0.72rem;font-weight:700;color:var(--gold);margin-top:auto;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.07);text-align:center;line-height:1.4;}
+.pc-lit small{display:block;font-size:0.58rem;font-weight:500;color:rgba(255,255,255,0.32);text-transform:uppercase;letter-spacing:0.06em;margin-top:1px;}
+.pc-hint{font-size:0.64rem;color:rgba(201,168,76,0.6);text-align:center;margin-top:0.35rem;letter-spacing:0.05em;}
+
+/* ── COMPARADOR ── */
+.comp-wrap{overflow-x:auto;}
+.comp-table{width:100%;border-collapse:collapse;font-size:0.82rem;min-width:720px;}
+.comp-table th{background:rgba(255,255,255,0.03);color:var(--gold);padding:0.95rem 1rem;text-align:center;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-right:1px solid rgba(255,255,255,0.05);}
+.comp-table th:first-child{text-align:left;width:25%;}
+.comp-table th.fc{background:rgba(201,168,76,0.1);}
+.comp-table td{padding:0.68rem 1rem;border-bottom:1px solid var(--bdr2);border-right:1px solid var(--bdr2);text-align:center;color:rgba(255,255,255,0.5);vertical-align:middle;}
+.comp-table td:first-child{text-align:left;font-weight:600;color:#fff;font-size:0.8rem;}
+.comp-table td.fc{background:rgba(201,168,76,0.04);}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table .pr td{background:rgba(255,255,255,0.025);padding:0.82rem 1rem;border-bottom:2px solid var(--bdr);}
+.comp-table .pr td:first-child{background:rgba(255,255,255,0.04);}
+.pnc{font-family:'Playfair Display',serif;font-size:0.97rem;font-weight:700;color:var(--gold);display:block;}
+.pec{font-size:0.58rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;display:block;margin-top:2px;}
+.ck{color:#4A9470;font-weight:700;} .dx{color:rgba(255,255,255,0.16);}
+
+/* ── PLAN DETAIL TABS ── */
+.plan-tabs{display:flex;gap:0;border-bottom:1px solid var(--bdr2);margin-bottom:1.6rem;overflow-x:auto;}
+.pt-btn{background:none;border:none;border-bottom:2px solid transparent;padding:0.78rem 1.3rem;font-family:'Inter',sans-serif;font-size:0.74rem;font-weight:600;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .2s;margin-bottom:-1px;}
+.pt-btn:hover{color:#fff;}
+.pt-btn.on{color:#fff;border-bottom-color:var(--gold);}
+.plan-detail{display:none;}
+.plan-detail.on{display:grid;grid-template-columns:195px 1fr;gap:0;border:1px solid var(--bdr);border-radius:8px;overflow:hidden;}
+.pd-side{background:rgba(255,255,255,0.03);padding:1.5rem 1.2rem;display:flex;flex-direction:column;gap:0.7rem;}
+.pd-name{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--gold);line-height:1;}
+.pd-emp{font-size:0.58rem;color:rgba(255,255,255,0.28);text-transform:uppercase;letter-spacing:0.12em;}
+.pd-price{font-size:1.85rem;font-weight:700;color:#fff;line-height:1;}
+.pd-pnote{font-size:0.62rem;color:rgba(255,255,255,0.24);}
+.pd-dgi{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:5px;padding:0.5rem 0.75rem;}
+.pd-dgi-l{font-size:0.58rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;}
+.pd-dgi-v{font-size:0.97rem;font-weight:700;color:var(--gold);}
+.pd-lit{background:rgba(255,255,255,0.035);border-radius:5px;padding:0.5rem;text-align:center;margin-top:auto;}
+.pd-lit-l{font-size:0.56rem;color:rgba(255,255,255,0.26);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:2px;}
+.pd-lit-v{font-size:1.25rem;font-weight:700;color:var(--gold);}
+.pd-deploy{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.pd-di{background:rgba(255,255,255,0.035);border-radius:4px;padding:0.36rem 0.48rem;}
+.pd-di span{font-size:0.53rem;color:rgba(255,255,255,0.24);text-transform:uppercase;letter-spacing:0.08em;display:block;}
+.pd-di strong{font-size:0.7rem;font-weight:600;color:rgba(255,255,255,0.68);}
+.pd-benefits{background:rgba(0,0,0,0.18);padding:1.35rem 1.5rem;overflow-y:auto;max-height:480px;}
+.pd-bh{font-size:0.58rem;color:rgba(255,255,255,0.38);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr2);margin-bottom:0.7rem;}
+.bi{display:flex;align-items:flex-start;gap:9px;padding:0.48rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.bi:last-child{border-bottom:none;}
+.bi-ico{width:27px;height:27px;background:rgba(201,168,76,0.09);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bi-ico i{color:var(--gold);font-size:12px;}
+.bi-txt strong{display:block;font-size:0.82rem;font-weight:600;color:#fff;margin-bottom:1px;}
+.bi-txt span{font-size:0.75rem;color:rgba(255,255,255,0.46);line-height:1.5;}
+
+/* ── VAL TABLE ── */
+.val-table{width:100%;border-collapse:collapse;font-size:0.86rem;}
+.val-table th{background:rgba(201,168,76,0.09);color:var(--gold);padding:0.85rem 1.1rem;text-align:left;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(201,168,76,0.16);}
+.val-table td{padding:0.85rem 1.1rem;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.65);}
+.val-table tr:hover td{background:rgba(255,255,255,0.025);}
+.vp{font-family:'Playfair Display',serif;font-weight:700;color:#fff!important;font-size:0.96rem;}
+.vg{color:var(--gold)!important;font-weight:600;}
+
+/* ── GOLDEN HOUR · VERTICAL TIMELINE CHART ── */
+.gh-interactive{background:rgba(255,255,255,0.018);border:1px solid rgba(201,168,76,0.16);border-radius:12px;padding:1.8rem 1.8rem 1.4rem;}
+.gh-tl-head{margin-bottom:1.4rem;}
+.gh-tl-axis-lbl{display:flex;justify-content:space-between;font-size:0.62rem;color:rgba(255,255,255,0.32);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;padding:0 0 0 28px;}
+.gh-timeline{position:relative;padding-left:28px;}
+.gh-tl-track{position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,0.08);border-radius:2px;}
+.gh-tl-progress{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px;transition:height 2.4s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(201,168,76,0.5);}
+.gh-tl-node{position:relative;margin-bottom:1.6rem;}
+.gh-tl-node:last-child{margin-bottom:0;}
+.gh-tl-dot{position:absolute;left:-28px;top:1.05rem;width:12px;height:12px;border-radius:50%;background:var(--navy3);border:2px solid rgba(255,255,255,0.18);transition:border-color .5s,background .5s,box-shadow .5s;z-index:2;}
+.gh-tl-node.gh-tl-active .gh-tl-dot{border-color:var(--gold);background:var(--gold);box-shadow:0 0 0 5px rgba(201,168,76,0.16);}
+.gh-tl-card{background:rgba(255,255,255,0.022);border:1px solid var(--bdr2);border-radius:9px;padding:1rem 1.15rem;opacity:0.35;transform:translateX(-6px);transition:opacity .6s ease,transform .6s ease,border-color .6s ease;}
+.gh-tl-node.gh-tl-active .gh-tl-card{opacity:1;transform:translateX(0);border-color:rgba(201,168,76,0.3);}
+.gh-tl-card-time{font-size:0.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.3rem;}
+.gh-tl-card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:0.45rem;}
+.gh-tl-card-text{font-size:0.81rem;color:rgba(255,255,255,0.5);line-height:1.68;margin-bottom:0.6rem;}
+.gh-tl-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.gh-tl-list li{font-size:0.77rem;color:rgba(255,255,255,0.48);display:flex;align-items:flex-start;gap:7px;}
+.gh-tl-list i{color:var(--gold);font-size:13px;margin-top:2px;flex-shrink:0;}
+
+/* ── ESCENARIOS ── */
+.scen-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.scen{border-radius:8px;overflow:hidden;border:1px solid var(--bdr);}
+.scen-head{background:rgba(255,255,255,0.03);padding:0.85rem 1.3rem;display:flex;justify-content:space-between;align-items:center;}
+.scen-head h4{font-family:'Playfair Display',serif;color:#fff;font-size:0.9rem;font-weight:700;}
+.badge{background:rgba(201,168,76,0.15);color:var(--gold);font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:0.07em;}
+.scen-body{display:grid;grid-template-columns:1fr 1fr;}
+.scol{padding:1.1rem 1.2rem;font-size:0.8rem;line-height:1.7;color:var(--muted);}
+.scol.bad{background:rgba(156,58,58,0.06);border-right:1px solid var(--bdr);}
+.scol.good{background:rgba(58,122,90,0.06);}
+.scol-lbl{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:0.45rem;}
+.bad .scol-lbl{color:#C97A7A;} .good .scol-lbl{color:#6FC79A;}
+.scol-cost{font-weight:700;margin-top:0.55rem;font-size:0.9rem;display:block;}
+.bad .scol-cost{color:#C97A7A;} .good .scol-cost{color:#6FC79A;}
+
+/* ── ESPECIALISTAS ── */
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.spec{background:rgba(255,255,255,0.025);border:1px solid var(--bdr2);border-radius:9px;padding:1.15rem;transition:border-color .2s;text-align:left;}
+.spec:hover{border-color:var(--bdr);}
+.spec-top{display:flex;align-items:center;gap:10px;margin-bottom:0.65rem;}
+.spec-ico{width:38px;height:38px;background:var(--gold);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.spec-ico i{color:var(--navy2);font-size:17px;}
+.spec-role{font-size:0.57rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;}
+.spec-name{font-size:0.88rem;font-weight:700;color:#fff;}
+.spec-desc{font-size:0.77rem;color:rgba(255,255,255,0.48);line-height:1.58;margin-bottom:0.65rem;}
+.spec-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.stag{background:rgba(255,255,255,0.055);color:rgba(255,255,255,0.65);font-size:0.59rem;font-weight:600;padding:3px 6px;border-radius:3px;}
+
+/* ── FAQ ── */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:2px;}
+.faq-item{border:1px solid var(--bdr2);border-radius:7px;overflow:hidden;background:rgba(255,255,255,0.025);}
+.faq-q{width:100%;background:transparent;border:none;padding:1rem 1.35rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.86rem;font-weight:600;color:#fff;text-align:left;transition:background .2s;gap:1rem;}
+.faq-q:hover{background:rgba(255,255,255,0.03);}
+.faq-q.open{background:rgba(201,168,76,0.08);color:var(--gold);}
+.faq-q .faq-icon{color:var(--gold);font-size:16px;flex-shrink:0;transition:transform .25s;}
+.faq-q.open .faq-icon{transform:rotate(45deg);}
+.faq-a{display:none;padding:0.95rem 1.35rem 1rem;background:rgba(0,0,0,0.18);font-size:0.83rem;color:rgba(255,255,255,0.52);line-height:1.76;border-top:1px solid var(--bdr2);}
+.faq-a.open{display:block;}
+
+/* ── CONTACT ── */
+.contact-channel{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,0.025);border:1px solid var(--bdr2);border-radius:7px;padding:0.9rem 1.1rem;margin-bottom:9px;transition:border-color .2s;}
+.contact-channel:hover{border-color:var(--bdr);}
+.cc-ico{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cc-lbl{font-size:0.6rem;color:rgba(255,255,255,0.38);text-transform:uppercase;letter-spacing:0.1em;}
+.cc-val{font-weight:700;color:#fff;font-size:0.9rem;}
+.hours-card{background:rgba(255,255,255,0.025);border:1px solid var(--bdr2);border-radius:7px;padding:0.9rem 1.1rem;margin-top:9px;}
+.hours-lbl{font-size:0.6rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;}
+.hours-row{display:flex;justify-content:space-between;font-size:0.78rem;padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);}
+.hours-row:last-child{border-bottom:none;}
+.hours-row strong{color:#fff;font-weight:600;}
+.emergency-badge{background:rgba(201,168,76,0.07);border:1px solid var(--bdr);border-radius:7px;padding:0.9rem 1.1rem;margin-top:9px;}
+.eb-lbl{font-size:0.6rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;}
+.eb-txt{font-size:0.8rem;color:rgba(255,255,255,0.46);line-height:1.6;}
+
+/* ── FORM ── */
+.form-box{background:rgba(255,255,255,0.025);border:1px solid var(--bdr2);border-radius:10px;padding:2rem;}
+.form-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.28rem;}
+.form-box .form-sub{font-size:0.8rem;color:rgba(255,255,255,0.46);margin-bottom:1.4rem;}
+.f-lbl{font-size:0.65rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:5px;}
+.f-input{width:100%;border:1px solid var(--bdr2);border-radius:5px;padding:0.62rem 0.78rem;font-family:'Inter',sans-serif;font-size:0.84rem;color:#fff;background:rgba(255,255,255,0.035);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+select.f-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A9BB0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.8rem center;padding-right:2rem;}
+select.f-input option{color:#0D1F3C;background:#fff;}
+.f-input:focus{border-color:var(--gold);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;}
+.form-col{margin-bottom:11px;}
+.f-error{display:none;background:rgba(156,58,58,0.08);border:1px solid rgba(156,58,58,0.28);border-radius:5px;padding:0.55rem 0.85rem;font-size:0.78rem;color:#C97A7A;margin-bottom:0.9rem;}
+.f-success{display:none;background:rgba(58,122,90,0.08);border:1px solid rgba(58,122,90,0.28);border-radius:7px;padding:1.2rem;text-align:center;margin-bottom:1rem;}
+.f-success i{color:#6FC79A;font-size:26px;display:block;margin-bottom:0.45rem;}
+.f-success strong{display:block;font-weight:700;color:#fff;margin-bottom:3px;}
+.f-success span{font-size:0.8rem;color:rgba(255,255,255,0.46);}
+.form-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.btn-wa{background:#25D366;color:#fff;border:none;padding:0.78rem 1rem;border-radius:5px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s;}
+.btn-wa:hover{background:#1fba58;}
+.btn-em{background:rgba(255,255,255,0.06);color:#fff;border:none;padding:0.78rem 1rem;border-radius:5px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s;}
+.btn-em:hover{background:rgba(255,255,255,0.1);}
+.f-privacy{font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.75rem;}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:var(--gold);padding:3rem 2.5rem;text-align:center;position:relative;z-index:5;}
+.cta-strip h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--navy2);margin-bottom:0.32rem;}
+.cta-strip p{font-size:0.84rem;color:rgba(13,31,60,0.6);margin-bottom:1.2rem;}
+.cta-row{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;}
+.btn-dark{background:var(--navy2);color:#fff;border:none;padding:0.75rem 1.8rem;border-radius:2px;font-family:'Inter',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-ghost{background:transparent;color:var(--navy2);border:2px solid var(--navy2);padding:0.73rem 1.8rem;border-radius:2px;font-family:'Inter',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;}
+
+/* ── FOOTER ── */
+.footer-exp{background:var(--black);border-top:1px solid var(--bdr);padding:2.8rem 2.5rem 1.4rem;position:relative;z-index:5;}
+.footer-exp-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem;padding-bottom:1.8rem;border-bottom:1px solid var(--bdr2);}
+.footer-col h4{font-size:0.63rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;margin-bottom:0.85rem;}
+.footer-col p,.footer-col a{display:block;font-size:0.8rem;color:rgba(255,255,255,0.4);text-decoration:none;line-height:1.95;}
+.footer-col a:hover{color:var(--gold);}
+.footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.05rem;font-weight:700;letter-spacing:0.07em;margin-bottom:0.55rem;}
+.footer-bottom{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:1.2rem;flex-wrap:wrap;gap:0.5rem;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .scen-grid,.spec-grid{grid-template-columns:1fr;}
+  .plan-cards{grid-template-columns:repeat(2,1fr);}
+  .plan-detail.on{grid-template-columns:1fr;}
+  .nav{padding:0.9rem 1.4rem;top:24px;}
+  .nav-links{display:none;}
+  .nav-mobile-btn{display:block;}
+  .screen{padding:5.5rem 1.3rem 3rem;}
+  .footer-exp-grid{grid-template-columns:1fr 1fr;}
+  .util-bar{padding:0.42rem 1.2rem;justify-content:center;}
+  .util-right{display:none;}
+  .gh-timeline{padding-left:22px;}
+  .gh-tl-dot{left:-22px;}
+  .gh-tl-card{padding:0.85rem 0.95rem;}
+  .cov-tab{padding:0.65rem 0.85rem;font-size:0.65rem;}
+  #contacto-grid{grid-template-columns:1fr!important;}
+  .detail-inner{padding:1.6rem 1.2rem;}
+  .screen-stats{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:560px){
+  .plan-cards{grid-template-columns:1fr;}
+  .footer-exp-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ UTIL BAR ══ -->
+<div id="site-header">
+<div class="util-bar">
+  <div class="util-left">
+    <a href="tel:+50761293393"><i class="ti ti-phone"></i> +507 6129-3393</a>
+    <a href="https://wa.me/50761293393" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+    <a href="mailto:corporativo@lexprotect.com.pa"><i class="ti ti-mail"></i> corporativo@lexprotect.com.pa</a>
+  </div>
+  <div class="util-right"><i class="ti ti-clock-24"></i> Línea de emergencias 24/7 — exclusiva para miembros activos</div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="mainNav">
+  <a href="#inicio" class="brand">LEXPROTECT<small>H&amp;M Abogados · MAVAC Abogados · Panamá</small></a>
+  <ul class="nav-links">
+    <li><a href="#cobertura">Cobertura</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#golden">Golden Hour</a></li>
+    <li><a href="#especialistas">Especialistas</a></li>
+    <li><a href="#contacto" class="btn-nav">Diagnóstico gratuito</a></li>
+  </ul>
+  <button class="nav-mobile-btn" onclick="this.previousElementSibling.style.display='flex'"><i class="ti ti-menu-2"></i></button>
+</nav>
+</div>
+
+<!-- ══ SCREEN 1 · HERO ══ -->
+<section id="inicio" class="screen" data-bg="hero">
+  <div class="screen-bg" style="background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,0.13),transparent 60%),linear-gradient(180deg,#060B14 0%,#0A1829 55%,#060B14 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 18% 75%,rgba(201,168,76,0.06),transparent 40%),radial-gradient(circle at 85% 20%,rgba(201,168,76,0.05),transparent 35%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Membresía Jurídica Preventiva · Panamá</div>
+    <h1 class="screen-h xl">La certeza no se<br>improvisa. <em>Se ingenia.</em></h1>
+    <p class="screen-sub">Un sistema preventivo permanente que convierte la protección jurídica en un gasto fijo, predecible y 100% deducible ante la DGI.</p>
+    <div class="screen-cta">
+      <a href="#contacto" class="btn-p">Solicitar diagnóstico gratuito</a>
+      <a href="#tesis" class="btn-o">Conocer el sistema ↓</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Desplácese</span><div class="line"></div></div>
+</section>
+
+<!-- ══ SCREEN 2 · TESIS ══ -->
+<section id="tesis" class="screen" data-bg="tesis">
+  <div class="screen-bg" style="background:linear-gradient(160deg,#0A1829 0%,#0D1F3C 50%,#0A1829 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 75% 60%,rgba(201,168,76,0.08),transparent 45%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Lo que nos define</div>
+    <h2 class="screen-h lg">No somos la firma<br>con <em>más recursos.</em></h2>
+    <p class="screen-sub">Somos la protección real que su empresa necesita — todos los días del año, no solo cuando el problema ya ocurrió.</p>
+    <div class="screen-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:8px;overflow:hidden;max-width:680px;width:100%;">
+      <div style="background:rgba(10,24,41,0.6);padding:1.5rem 1rem;"><span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:0.3rem;">50+</span><span style="color:rgba(255,255,255,0.35);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;">Especialistas</span></div>
+      <div style="background:rgba(10,24,41,0.6);padding:1.5rem 1rem;"><span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:0.3rem;">24/7</span><span style="color:rgba(255,255,255,0.35);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;">Disponibilidad</span></div>
+      <div style="background:rgba(10,24,41,0.6);padding:1.5rem 1rem;"><span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:0.3rem;">25%</span><span style="color:rgba(255,255,255,0.35);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;">Subsidio DGI</span></div>
+      <div style="background:rgba(10,24,41,0.6);padding:1.5rem 1rem;"><span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:0.3rem;">5</span><span style="color:rgba(255,255,255,0.35);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;">Planes</span></div>
+    </div>
+  </div>
+</section>
+<!-- ══ SCREEN 3 · COBERTURA ══ -->
+<section id="cobertura" class="screen" data-bg="cobertura" style="padding-top:7rem;padding-bottom:4rem;">
+  <div class="screen-bg" style="background:linear-gradient(180deg,#060B14 0%,#0A1829 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 25% 30%,rgba(201,168,76,0.07),transparent 42%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Mapa de cobertura</div>
+    <h2 class="screen-h lg">Tres dimensiones.<br><em>Cero excepciones.</em></h2>
+    <p class="screen-sub">Laboral, Penal y Administrativo se evalúan en todo diagnóstico, sin importar el plan contratado. La profundidad escala con la membresía — la cobertura, no.</p>
+    <button class="btn-reveal" onclick="togglePanel('panel-cobertura', this)"><span>Ver mapa completo</span><i class="ti ti-chevron-down"></i></button>
+  </div>
+
+  <div class="detail-panel" id="panel-cobertura">
+    <div class="detail-inner">
+      <div class="cov-tabs">
+        <button class="cov-tab on" onclick="showCovTab('laboral',this)">Laboral</button>
+        <button class="cov-tab" onclick="showCovTab('penal',this)">Penal</button>
+        <button class="cov-tab" onclick="showCovTab('admin',this)">Administrativo y Fiscal</button>
+        <button class="cov-tab" onclick="showCovTab('compliance',this)">Compliance y Contrataciones</button>
+      </div>
+
+      <div id="cov-laboral" class="cov-panel on">
+        <div class="cov-acc">
+          <button class="cov-acc-h open" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">MITRADEL · Laboral</div><div class="cov-title">Cobertura 100% Integral</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body open">
+            <div class="cov-desc">Auditoría preventiva continua, gestión total de crisis y litigio ante Juntas de Conciliación y Juzgados Seccionales de Trabajo. Cubre inscripción en CSS, contratos, décimo tercer mes, Reglamento Interno, horas extras, trabajadores extranjeros y despidos.</div>
+            <div class="cov-tags"><span class="ctag">Boutique</span><span class="ctag">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">CSS · Seguridad Social</div><div class="cov-title">Monitoreo incluido · Convenio desde Executive</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Monitoreo de planillas e inscripción de trabajadores desde Boutique. A partir de Executive, gestión directa de procesos de fiscalización y alcances de la Caja de Seguro Social mediante convenio estratégico.</div>
+            <div class="cov-tags"><span class="ctag">Boutique · monitoreo</span><span class="ctag">Vanguard · monitoreo</span><span class="ctag">Executive · convenio</span><span class="ctag">Prestige · convenio</span><span class="ctag">Apex · convenio</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cov-penal" class="cov-panel">
+        <div class="cov-acc">
+          <button class="cov-acc-h open" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">Ministerio Público · Penal</div><div class="cov-title">Cobertura 100% Emergencias</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body open">
+            <div class="cov-desc">Protocolo Golden Hour, protección directiva, control de evidencia y mando único ante cualquier declaración oficial. Ningún colaborador declara sin orientación activa del equipo jurídico, sin excepción.</div>
+            <div class="cov-tags"><span class="ctag">Boutique</span><span class="ctag">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">Ministerio Público · Penal Corporativo</div><div class="cov-title">Cobertura Ampliada — Executive en adelante</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Protección penal ampliada para directivos, representantes legales y socios ante investigaciones por delitos económicos. Incluye acceso prioritario a penalistas corporativos. En Prestige y Apex, psicólogo forense en el despliegue.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cov-admin" class="cov-panel">
+        <div class="cov-acc">
+          <button class="cov-acc-h open" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">MICI · Registros y Operación</div><div class="cov-title">Cobertura Integral — Todos los planes</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body open">
+            <div class="cov-desc">Vigencia del Aviso de Operación, registro de marca comercial y cumplimiento de la Ley 13/1994 en contratos de distribución. Un Aviso de Operación vencido implica cierre inmediato sancionable.</div>
+            <div class="cov-tags"><span class="ctag">Boutique</span><span class="ctag">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">DGI · Fiscal</div><div class="cov-title">Convenio Estratégico — Executive en adelante</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Acompañamiento en fiscalizaciones, alcances y jurisdicción coactiva de la DGI. Defensa ante medidas cautelares y gestión de paz y salvos.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">ACODECO · Consumidor</div><div class="cov-title">Convenio Estratégico — Executive en adelante</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Defensa ante quejas de consumidores, revisión de publicidad y control de precios bajo la Ley 45 de 2007.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">ASEP · Servicios Públicos</div><div class="cov-title">Convenio Estratégico — Executive en adelante</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Intervenciones y cumplimiento normativo para sectores regulados por la autoridad de servicios públicos.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cov-compliance" class="cov-panel">
+        <div class="cov-acc">
+          <button class="cov-acc-h open" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">UAF · AML / CFT</div><div class="cov-title">Convenio Estratégico — Executive en adelante</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body open">
+            <div class="cov-desc">Inscripción como sujeto obligado, diseño e implementación de programas AML/CFT y presentación de ROS ante la Unidad de Análisis Financiero. Obligatorio para sectores regulados.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">Ley 81/2019 · Protección de Datos</div><div class="cov-title">Cobertura Integral — Todos los planes</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Diagnóstico y diseño de política de privacidad conforme a la Ley 81 de 2019. La mayoría de empresas panameñas aún no cumple — riesgo de multas activas.</div>
+            <div class="cov-tags"><span class="ctag">Boutique</span><span class="ctag">Vanguard</span><span class="ctag">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+        <div class="cov-acc">
+          <button class="cov-acc-h" onclick="toggleCovAcc(this)">
+            <div class="cov-acc-left"><div class="cov-ent">Contrataciones Públicas · Ley 22</div><div class="cov-title">Convenio Estratégico — Prestige y Apex</div></div>
+            <i class="ti ti-plus cov-acc-icon"></i>
+          </button>
+          <div class="cov-acc-body">
+            <div class="cov-desc">Asesoría en licitaciones bajo la Ley 22 de 2006 e interposición de recursos ante el Tribunal Administrativo de Contrataciones Públicas.</div>
+            <div class="cov-tags"><span class="ctag off">Boutique</span><span class="ctag off">Vanguard</span><span class="ctag off">Executive</span><span class="ctag">Prestige</span><span class="ctag">Apex</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══ SCREEN 4 · PLANES ══ -->
+<section id="planes" class="screen" data-bg="planes" style="padding-top:7rem;padding-bottom:4rem;">
+  <div class="screen-bg" style="background:linear-gradient(160deg,#0A1829 0%,#0D1F3C 50%,#0A1829 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 70% 35%,rgba(201,168,76,0.08),transparent 45%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Membresías</div>
+    <h2 class="screen-h lg">Cinco niveles.<br>Un mismo <em>blindaje.</em></h2>
+    <p class="screen-sub">De 1 a 150 empleados. Protección activa desde el día de la firma — el costo final se ajusta al perfil de riesgo real de su empresa.</p>
+    <button class="btn-reveal" onclick="togglePanel('panel-planes', this)"><span>Ver los cinco planes</span><i class="ti ti-chevron-down"></i></button>
+  </div>
+
+  <div class="detail-panel" id="panel-planes">
+    <div class="detail-inner">
+
+      <div class="tc"><div class="note-bar"><span>* Precios de <strong>tarifa base</strong> — el costo final varía según sector, exposición legal y perfil regulatorio de la empresa.</span></div></div>
+
+      <div class="plan-cards" style="margin-top:1.6rem;">
+        <div class="pc" onclick="showDetail('boutique',document.querySelector('.pt-btn:nth-child(1)'))">
+          <div class="pc-name">Boutique</div><div class="pc-emp">1 – 4 empleados</div>
+          <div class="pc-price">$350</div><div class="pc-note">por mes</div>
+          <div class="pc-dgi"><span>Costo neto DGI</span><strong>$262 / mes</strong></div>
+          <div class="pc-divider"></div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Atención 24/7 · Laboral · Penal</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Activación remota día 1</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Checklist diagnóstico inicial</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Golden Hour activable</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Red 50+ especialistas</div>
+          <div class="pc-lit">15% desc. litigio y trámites<small>Honorarios y gestiones adicionales</small></div>
+          <div class="pc-hint">Ver detalle completo ↓</div>
+        </div>
+        <div class="pc" onclick="showDetail('vanguard',document.querySelector('.pt-btn:nth-child(2)'))">
+          <div class="pc-name">Vanguard</div><div class="pc-emp">5 – 20 empleados</div>
+          <div class="pc-price">$900</div><div class="pc-note">por mes</div>
+          <div class="pc-dgi"><span>Costo neto DGI</span><strong>$675 / mes</strong></div>
+          <div class="pc-divider"></div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Todo Boutique incluido</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Auditoría legal anual completa</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Despliegue físico máx. 48 h</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Monitoreo CSS · MITRADEL · DGI</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Gestión total de crisis laboral</div>
+          <div class="pc-lit">30% desc. litigio y trámites<small>Honorarios y gestiones adicionales</small></div>
+          <div class="pc-hint">Ver detalle completo ↓</div>
+        </div>
+        <div class="pc feat" onclick="showDetail('executive',document.querySelector('.pt-btn:nth-child(3)'))">
+          <div class="pc-badge">Más solicitado</div>
+          <div class="pc-name">Executive</div><div class="pc-emp">21 – 40 empleados</div>
+          <div class="pc-price">$1,900</div><div class="pc-note">por mes</div>
+          <div class="pc-dgi"><span>Costo neto DGI</span><strong>$1,425 / mes</strong></div>
+          <div class="pc-divider"></div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Activación presencial en instalaciones</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Auditoría semestral profunda</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Despliegue físico máx. 24 h</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Cobertura DGI · CSS · ACODECO · ASEP</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Equipo de 2 abogados dedicados</div>
+          <div class="pc-lit">40% desc. litigio y trámites<small>Honorarios y gestiones adicionales</small></div>
+          <div class="pc-hint">Ver detalle completo ↓</div>
+        </div>
+        <div class="pc" onclick="showDetail('prestige',document.querySelector('.pt-btn:nth-child(4)'))">
+          <div class="pc-name">Prestige</div><div class="pc-emp">41 – 70 empleados</div>
+          <div class="pc-price">$3,500</div><div class="pc-note">por mes</div>
+          <div class="pc-dgi"><span>Costo neto DGI</span><strong>$2,625 / mes</strong></div>
+          <div class="pc-divider"></div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Equipo dedicado a la cuenta</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Auditoría trimestral ampliada</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Despliegue físico máx. 12 h</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Psicólogo forense en despliegue</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Contrataciones públicas incluidas</div>
+          <div class="pc-lit">50% desc. litigio y trámites<small>Honorarios y gestiones adicionales</small></div>
+          <div class="pc-hint">Ver detalle completo ↓</div>
+        </div>
+        <div class="pc" onclick="showDetail('apex',document.querySelector('.pt-btn:nth-child(5)'))">
+          <div class="pc-name">Apex</div><div class="pc-emp">71 – 150 empleados</div>
+          <div class="pc-price">$6,800</div><div class="pc-note">por mes</div>
+          <div class="pc-dgi"><span>Costo neto DGI</span><strong>$5,100 / mes</strong></div>
+          <div class="pc-divider"></div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Director Legal Externo Dedicado</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Auditoría mensual integral</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Despliegue físico máx. 4 h</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Dashboard certeza operativa</div>
+          <div class="pc-fi"><i class="ti ti-check"></i>Gestión integral AML / CFT</div>
+          <div class="pc-lit">60% desc. litigio y trámites<small>Honorarios y gestiones adicionales</small></div>
+          <div class="pc-hint">Ver detalle completo ↓</div>
+        </div>
+      </div>
+
+      <!-- COMPARADOR -->
+      <div class="sec-divider"></div>
+      <div class="lbl">Comparador</div>
+      <h3 class="h2">Todo lado a lado</h3>
+      <p class="sub">Cada dimensión comparada entre los cinco planes.</p>
+      <div class="comp-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr><th></th><th>Boutique</th><th>Vanguard</th><th class="fc">Executive</th><th>Prestige</th><th>Apex</th></tr>
+          </thead>
+          <tbody>
+            <tr class="pr">
+              <td><span style="color:rgba(255,255,255,0.24);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;">Empresa</span></td>
+              <td><span class="pnc">Boutique</span><span class="pec">1–4 emp.</span></td>
+              <td><span class="pnc">Vanguard</span><span class="pec">5–20 emp.</span></td>
+              <td class="fc"><span class="pnc">Executive</span><span class="pec">21–40 emp.</span></td>
+              <td><span class="pnc">Prestige</span><span class="pec">41–70 emp.</span></td>
+              <td><span class="pnc">Apex</span><span class="pec">71–150 emp.</span></td>
+            </tr>
+            <tr><td>Precio base / mes</td><td><strong>$350</strong></td><td><strong>$900</strong></td><td class="fc"><strong>$1,900</strong></td><td><strong>$3,500</strong></td><td><strong>$6,800</strong></td></tr>
+            <tr><td>Costo neto DGI / mes</td><td style="color:var(--gold);font-weight:600;">$262</td><td style="color:var(--gold);font-weight:600;">$675</td><td class="fc" style="color:var(--gold);font-weight:600;">$1,425</td><td style="color:var(--gold);font-weight:600;">$2,625</td><td style="color:var(--gold);font-weight:600;">$5,100</td></tr>
+            <tr><td>Ahorro DGI anual</td><td>$1,056</td><td>$2,700</td><td class="fc">$5,700</td><td>$10,500</td><td>$20,400</td></tr>
+            <tr><td>Descuento en litigio</td><td>15%</td><td>30%</td><td class="fc">40%</td><td>50%</td><td>60%</td></tr>
+            <tr><td>Disponibilidad</td><td><span class="ck">✓</span> 24/7</td><td><span class="ck">✓</span> 24/7</td><td class="fc"><span class="ck">✓</span> 24/7</td><td><span class="ck">✓</span> 24/7</td><td><span class="ck">✓</span> 24/7</td></tr>
+            <tr><td>Activación</td><td>Remota</td><td>Remota + física</td><td class="fc">Presencial</td><td>Presencial ded.</td><td>Presencial senior</td></tr>
+            <tr><td>Despliegue físico</td><td>Remoto</td><td>Máx. 48 h</td><td class="fc">Máx. 24 h</td><td>Máx. 12 h</td><td>Máx. 4 h</td></tr>
+            <tr><td>Auditoría legal</td><td>Checklist inicial</td><td>Anual</td><td class="fc">Semestral</td><td>Trimestral</td><td>Mensual</td></tr>
+            <tr><td>Cobertura MITRADEL</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td class="fc"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Golden Hour activable</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td class="fc"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Cobertura DGI / CSS / ACODECO</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>AML / CFT completo</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Psicólogo forense</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="dx">—</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Contrataciones públicas</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="dx">—</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Director Legal Externo Ded.</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="dx">—</span></td><td><span class="dx">—</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Dashboard certeza operativa</td><td><span class="dx">—</span></td><td><span class="dx">—</span></td><td class="fc"><span class="dx">—</span></td><td><span class="dx">—</span></td><td><span class="ck">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DETALLE POR PLAN -->
+      <div class="sec-divider"></div>
+      <div class="lbl">Detalle por plan</div>
+      <h3 class="h2">Beneficios en detalle</h3>
+      <p class="sub">Selecciona un plan para ver todos sus beneficios incluidos.</p>
+      <div class="plan-tabs">
+        <button class="pt-btn on" onclick="showDetail('boutique',this)">Boutique</button>
+        <button class="pt-btn" onclick="showDetail('vanguard',this)">Vanguard</button>
+        <button class="pt-btn" onclick="showDetail('executive',this)">Executive</button>
+        <button class="pt-btn" onclick="showDetail('prestige',this)">Prestige</button>
+        <button class="pt-btn" onclick="showDetail('apex',this)">Apex</button>
+      </div>
+
+      <div id="detail-boutique" class="plan-detail on">
+        <div class="pd-side"><div><div class="pd-emp">1–4 empleados</div><div class="pd-name">Boutique</div></div><div><div class="pd-price">$350</div><div class="pd-pnote">por mes · tarifa base</div></div><div class="pd-dgi"><div class="pd-dgi-l">Costo neto DGI</div><div class="pd-dgi-v">$262 / mes</div></div><div class="pd-lit"><span class="pd-lit-l">Litigio y trámites</span><div class="pd-lit-v">15%</div></div><div class="pd-deploy"><div class="pd-di"><span>Auditoría</span><strong>Checklist inicial</strong></div><div class="pd-di"><span>Despliegue</span><strong>Remoto</strong></div><div class="pd-di"><span>Activación</span><strong>Remota</strong></div><div class="pd-di"><span>Horario</span><strong>24 h / 7 d</strong></div></div></div>
+        <div class="pd-benefits"><div class="pd-bh">Beneficios incluidos — Plan Boutique</div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-clock-24"></i></div><div class="bi-txt"><strong>Atención 24/7 — Administrativo · Laboral · Penal</strong><span>Acceso permanente a especialistas sin restricción de horario.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-bolt"></i></div><div class="bi-txt"><strong>Activación remota desde el día 1</strong><span>Cobertura activa desde la firma. Sin periodos de carencia.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-clipboard-list"></i></div><div class="bi-txt"><strong>Checklist de diagnóstico inicial</strong><span>Identificación de las tres vulnerabilidades críticas como punto de partida del blindaje preventivo.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-shield-lock"></i></div><div class="bi-txt"><strong>Protocolo Golden Hour activable</strong><span>Instrucciones inmediatas y protocolo de contención ante cualquier evento crítico.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-users"></i></div><div class="bi-txt"><strong>Acceso a la red de 50+ especialistas</strong><span>Abogados, CPA forense, peritos y accidentólogos bajo el SLA institucional.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-file-text"></i></div><div class="bi-txt"><strong>Revisión contractual preventiva</strong><span>Contratos y documentos clave bajo monitoreo jurídico permanente.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-receipt-tax"></i></div><div class="bi-txt"><strong>Subsidio fiscal DGI — 25% del costo</strong><span>$262/mes neto deducible bajo Art. 700 Código Fiscal y D.E. 170/1993.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-building-bank"></i></div><div class="bi-txt"><strong>Asesoría en obligaciones CSS</strong><span>Orientación sobre planillas, inscripción y prevención de mora ante la Caja de Seguro Social.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-discount-2"></i></div><div class="bi-txt"><strong>15% de descuento en litigio y trámites</strong><span>Reducción sobre honorarios de representación y sobre gestiones adicionales (registros MICI, permisos, regularizaciones ante CSS o DGI).</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-ban"></i></div><div class="bi-txt"><strong>Sin pasivo laboral</strong><span>Sin contratación interna, sin cargas sociales, sin décimos ni vacaciones acumuladas.</span></div></div>
+        </div>
+      </div>
+
+      <div id="detail-vanguard" class="plan-detail">
+        <div class="pd-side"><div><div class="pd-emp">5–20 empleados</div><div class="pd-name">Vanguard</div></div><div><div class="pd-price">$900</div><div class="pd-pnote">por mes · tarifa base</div></div><div class="pd-dgi"><div class="pd-dgi-l">Costo neto DGI</div><div class="pd-dgi-v">$675 / mes</div></div><div class="pd-lit"><span class="pd-lit-l">Litigio y trámites</span><div class="pd-lit-v">30%</div></div><div class="pd-deploy"><div class="pd-di"><span>Auditoría</span><strong>Anual completa</strong></div><div class="pd-di"><span>Despliegue</span><strong>Máx. 48 h</strong></div><div class="pd-di"><span>Activación</span><strong>Remota + física</strong></div><div class="pd-di"><span>Horario</span><strong>24 h / 7 d</strong></div></div></div>
+        <div class="pd-benefits"><div class="pd-bh">Beneficios incluidos — Plan Vanguard</div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-layers-intersect"></i></div><div class="bi-txt"><strong>Todo lo incluido en el plan Boutique</strong><span>Sin excepción.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-rotate-clockwise"></i></div><div class="bi-txt"><strong>Auditoría legal anual completa</strong><span>Revisión integral del estado jurídico una vez al año con informe formal por las tres dimensiones.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-map-pin"></i></div><div class="bi-txt"><strong>Despliegue físico garantizado en máx. 48 h</strong><span>Presencia en sitio ante adversidades, definida contractualmente.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-building"></i></div><div class="bi-txt"><strong>Protección ante inspecciones MITRADEL</strong><span>Respaldo técnico inmediato. Ningún colaborador declara sin orientación jurídica activa.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-chart-bar"></i></div><div class="bi-txt"><strong>Monitoreo laboral activo — CSS · MITRADEL · DGI</strong><span>Vigilancia continua de contratos, planillas y décimo tercer mes.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-gavel"></i></div><div class="bi-txt"><strong>Gestión total de crisis laboral</strong><span>Control ante demandas y notificaciones ante Juzgados Seccionales de Trabajo.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-receipt-tax"></i></div><div class="bi-txt"><strong>Subsidio fiscal DGI — ahorro $2,700 anuales</strong><span>$675/mes costo neto real reconocido como gasto deducible.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-discount-2"></i></div><div class="bi-txt"><strong>30% de descuento en litigio y trámites</strong><span>Reducción sobre honorarios si el caso escala a litigio, y sobre gestiones adicionales.</span></div></div>
+        </div>
+      </div>
+
+      <div id="detail-executive" class="plan-detail">
+        <div class="pd-side"><div><div class="pd-emp">21–40 empleados</div><div class="pd-name">Executive</div></div><div><div class="pd-price">$1,900</div><div class="pd-pnote">por mes · tarifa base</div></div><div class="pd-dgi"><div class="pd-dgi-l">Costo neto DGI</div><div class="pd-dgi-v">$1,425 / mes</div></div><div class="pd-lit"><span class="pd-lit-l">Litigio y trámites</span><div class="pd-lit-v">40%</div></div><div class="pd-deploy"><div class="pd-di"><span>Auditoría</span><strong>Semestral</strong></div><div class="pd-di"><span>Despliegue</span><strong>Máx. 24 h</strong></div><div class="pd-di"><span>Activación</span><strong>Presencial</strong></div><div class="pd-di"><span>Horario</span><strong>24 h / 7 d</strong></div></div></div>
+        <div class="pd-benefits"><div class="pd-bh">Beneficios incluidos — Plan Executive</div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-layers-intersect"></i></div><div class="bi-txt"><strong>Todo lo incluido en el plan Vanguard</strong><span>Sin excepción.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-map-pin"></i></div><div class="bi-txt"><strong>Activación presencial en instalaciones del cliente</strong><span>El equipo jurídico se incorpora físicamente en los días 3–5 desde la firma.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-rotate-2"></i></div><div class="bi-txt"><strong>Auditoría semestral profunda</strong><span>Dos revisiones al año con informe técnico y plan de acción para los siguientes 30 días.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-shield-lock"></i></div><div class="bi-txt"><strong>Despliegue físico garantizado en máx. 24 h</strong><span>Presencia física contractual ante cualquier adversidad.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-briefcase"></i></div><div class="bi-txt"><strong>Equipo de dos abogados especializados dedicados</strong><span>Asignación formal desde la activación.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-scale"></i></div><div class="bi-txt"><strong>Cobertura penal ampliada para directivos</strong><span>Protección activa ante el Ministerio Público para directivos, representantes legales y socios.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-building-bank"></i></div><div class="bi-txt"><strong>Cobertura DGI · CSS · ACODECO · ASEP</strong><span>Fiscalizaciones, alcances, quejas de consumidores y cumplimiento normativo sectorial.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-lock"></i></div><div class="bi-txt"><strong>Monitoreo AML / CFT</strong><span>Cumplimiento regulatorio ante la UAF. Diseño y mantenimiento de programas.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-receipt-tax"></i></div><div class="bi-txt"><strong>Subsidio fiscal DGI — ahorro $5,700 anuales</strong><span>$1,425/mes costo neto deducible.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-discount-2"></i></div><div class="bi-txt"><strong>40% de descuento en litigio y trámites</strong><span>El mayor descuento para el segmento de empresa mediana.</span></div></div>
+        </div>
+      </div>
+
+      <div id="detail-prestige" class="plan-detail">
+        <div class="pd-side"><div><div class="pd-emp">41–70 empleados</div><div class="pd-name">Prestige</div></div><div><div class="pd-price">$3,500</div><div class="pd-pnote">por mes · tarifa base</div></div><div class="pd-dgi"><div class="pd-dgi-l">Costo neto DGI</div><div class="pd-dgi-v">$2,625 / mes</div></div><div class="pd-lit"><span class="pd-lit-l">Litigio y trámites</span><div class="pd-lit-v">50%</div></div><div class="pd-deploy"><div class="pd-di"><span>Auditoría</span><strong>Trimestral</strong></div><div class="pd-di"><span>Despliegue</span><strong>Máx. 12 h</strong></div><div class="pd-di"><span>Activación</span><strong>Presencial ded.</strong></div><div class="pd-di"><span>Horario</span><strong>24 h / 7 d</strong></div></div></div>
+        <div class="pd-benefits"><div class="pd-bh">Beneficios incluidos — Plan Prestige</div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-layers-intersect"></i></div><div class="bi-txt"><strong>Todo lo incluido en el plan Executive</strong><span>Sin excepción.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-star"></i></div><div class="bi-txt"><strong>Equipo dedicado exclusivamente a la cuenta</strong><span>Asignación presencial de equipo dedicado más gestor de cuenta senior (días 2–3).</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-rotate-clockwise"></i></div><div class="bi-txt"><strong>Auditoría trimestral ampliada con equipo pericial</strong><span>Cuatro revisiones profundas al año. Entregable ejecutivo con cronograma de intervención.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-shield-lock"></i></div><div class="bi-txt"><strong>Despliegue físico garantizado en máx. 12 h</strong><span>Presencia física contractual en máximo 12 horas.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-brain"></i></div><div class="bi-txt"><strong>Psicólogo forense incluido en el despliegue</strong><span>Ante accidentes graves o eventos penales.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-trophy"></i></div><div class="bi-txt"><strong>Acceso prioritario a penalistas corporativos</strong><span>Especialistas en materia penal de forma directa y prioritaria.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-building-community"></i></div><div class="bi-txt"><strong>Contrataciones públicas — Ley 22 de 2006</strong><span>Asesoría en licitaciones e interposición de recursos ante el Tribunal Administrativo.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-receipt-tax"></i></div><div class="bi-txt"><strong>Subsidio fiscal DGI — ahorro $10,500 anuales</strong><span>$2,625/mes costo neto deducible.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-discount-2"></i></div><div class="bi-txt"><strong>50% de descuento en litigio y trámites</strong><span>La mitad del costo en honorarios de representación y gestiones adicionales.</span></div></div>
+        </div>
+      </div>
+
+      <div id="detail-apex" class="plan-detail">
+        <div class="pd-side"><div><div class="pd-emp">71–150 empleados</div><div class="pd-name">Apex</div></div><div><div class="pd-price">$6,800</div><div class="pd-pnote">por mes · tarifa base</div></div><div class="pd-dgi"><div class="pd-dgi-l">Costo neto DGI</div><div class="pd-dgi-v">$5,100 / mes</div></div><div class="pd-lit"><span class="pd-lit-l">Litigio y trámites</span><div class="pd-lit-v">60%</div></div><div class="pd-deploy"><div class="pd-di"><span>Auditoría</span><strong>Mensual integral</strong></div><div class="pd-di"><span>Despliegue</span><strong>Máx. 4 h</strong></div><div class="pd-di"><span>Activación</span><strong>Presencial senior</strong></div><div class="pd-di"><span>Horario</span><strong>24 h / 7 d</strong></div></div></div>
+        <div class="pd-benefits"><div class="pd-bh">Beneficios incluidos — Plan Apex</div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-layers-intersect"></i></div><div class="bi-txt"><strong>Todo lo incluido en el plan Prestige</strong><span>Sin excepción.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-crown"></i></div><div class="bi-txt"><strong>Equipo senior exclusivo y dedicado permanentemente</strong><span>Activación presencial en los días 1–2.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-user-star"></i></div><div class="bi-txt"><strong>Director Legal Externo Dedicado</strong><span>Contraparte institucional integrada en la planificación ejecutiva estratégica.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-rotate-clockwise"></i></div><div class="bi-txt"><strong>Auditoría mensual integral</strong><span>Revisión completa todos los meses. La mayor frecuencia del portafolio.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-shield-lock"></i></div><div class="bi-txt"><strong>Despliegue físico en máx. 4 h — el más rápido</strong><span>CPA forense y accidentólogo desde el minuto cero.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-dashboard"></i></div><div class="bi-txt"><strong>Dashboard de certeza operativa mensual</strong><span>Panel de control del estado jurídico con alerta temprana de riesgos emergentes.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-world"></i></div><div class="bi-txt"><strong>Contratos internacionales y estructura offshore</strong><span>Revisión de contratos con partes extranjeras, subsidiarias y estructuras en otras jurisdicciones.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-lock"></i></div><div class="bi-txt"><strong>Gestión integral AML / CFT</strong><span>Diseño, implementación y mantenimiento de programas completos de prevención.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-receipt-tax"></i></div><div class="bi-txt"><strong>Subsidio fiscal DGI — ahorro $20,400 anuales</strong><span>El mayor ahorro fiscal del portafolio LEXPROTECT.</span></div></div>
+          <div class="bi"><div class="bi-ico"><i class="ti ti-discount-2"></i></div><div class="bi-txt"><strong>60% de descuento en litigio y trámites</strong><span>El mayor descuento del portafolio. Aplica sobre honorarios y gestiones adicionales.</span></div></div>
+        </div>
+      </div>
+
+      <!-- VALOR ANUALIZADO -->
+      <div class="sec-divider"></div>
+      <div class="lbl">Argumento financiero</div>
+      <h3 class="h2">Valor anualizado</h3>
+      <p class="sub">Un solo evento no gestionado supera varios años de membresía combinada.</p>
+      <table class="val-table" style="background:rgba(255,255,255,0.02);border-radius:8px;overflow:hidden;">
+        <thead><tr><th>Plan</th><th>Precio / mes</th><th>Costo anual</th><th>Neto DGI / año</th><th>Se paga solo con…</th></tr></thead>
+        <tbody>
+          <tr><td class="vp">Boutique</td><td>$350</td><td>$4,200</td><td class="vg">$3,144</td><td>Una multa del MITRADEL o 2 meses de mora en CSS.</td></tr>
+          <tr><td class="vp">Vanguard</td><td>$900</td><td>$10,800</td><td class="vg">$8,100</td><td>Una demanda laboral en conciliación temprana.</td></tr>
+          <tr><td class="vp">Executive</td><td>$1,900</td><td>$22,800</td><td class="vg">$17,100</td><td>Una demanda laboral con sentencia más multas DGI.</td></tr>
+          <tr><td class="vp">Prestige</td><td>$3,500</td><td>$42,000</td><td class="vg">$31,500</td><td>Un litigio comercial de mediana complejidad o embargo.</td></tr>
+          <tr><td class="vp">Apex</td><td>$6,800</td><td>$81,600</td><td class="vg">$61,200</td><td>Una investigación penal corporativa o litigio internacional.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<!-- ══ SCREEN 5 · GOLDEN HOUR ══ -->
+<section id="golden" class="screen" data-bg="golden" style="padding-top:7rem;padding-bottom:4rem;">
+  <div class="screen-bg" style="background:linear-gradient(180deg,#060B14 0%,#0A1829 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 30% 65%,rgba(201,168,76,0.09),transparent 45%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Protocolo de respuesta</div>
+    <h2 class="screen-h lg">60 minutos deciden<br>el <em>80% del resultado.</em></h2>
+    <p class="screen-sub">Los primeros 60 minutos de cualquier evento crítico determinan el resultado legal. Ningún miembro enfrenta una crisis solo.</p>
+    <button class="btn-reveal" onclick="togglePanel('panel-golden', this)"><span>Ver el protocolo</span><i class="ti ti-chevron-down"></i></button>
+  </div>
+
+  <div class="detail-panel" id="panel-golden">
+    <div class="detail-inner">
+      <div class="gh-interactive" id="gh-widget">
+        <div class="gh-tl-head">
+          <div class="gh-tl-axis-lbl">
+            <span>Minuto 0</span><span>Minuto 60+</span>
+          </div>
+        </div>
+        <div class="gh-timeline" id="gh-timeline">
+          <div class="gh-tl-track">
+            <div class="gh-tl-progress" id="gh-tl-progress"></div>
+          </div>
+
+          <div class="gh-tl-node" id="gh-tl-node-1">
+            <div class="gh-tl-dot"></div>
+            <div class="gh-tl-card">
+              <div class="gh-tl-card-time">Minuto 0 – 10</div>
+              <div class="gh-tl-card-title">Activación inmediata</div>
+              <p class="gh-tl-card-text">La línea 24/7 se activa. El especialista de turno atiende sin espera ni filtro, para cualquier plan.</p>
+              <ul class="gh-tl-list">
+                <li><i class="ti ti-check"></i> Llamada atendida de inmediato.</li>
+                <li><i class="ti ti-check"></i> Instrucciones precisas: qué hacer, qué no decir.</li>
+                <li><i class="ti ti-check"></i> Ningún colaborador declara sin orientación activa.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="gh-tl-node" id="gh-tl-node-2">
+            <div class="gh-tl-dot"></div>
+            <div class="gh-tl-card">
+              <div class="gh-tl-card-time">Minuto 10 – 30</div>
+              <div class="gh-tl-card-title">Evaluación y contención</div>
+              <p class="gh-tl-card-text">El especialista clasifica el evento — laboral, penal o administrativo — y activa el protocolo de contención específico.</p>
+              <ul class="gh-tl-list">
+                <li><i class="ti ti-check"></i> Clasificación del evento por dimensión.</li>
+                <li><i class="ti ti-check"></i> Hoja de ruta para las próximas 4, 12 y 24 horas.</li>
+                <li><i class="ti ti-check"></i> Equipo técnico y pericial coordinado.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="gh-tl-node" id="gh-tl-node-3">
+            <div class="gh-tl-dot"></div>
+            <div class="gh-tl-card">
+              <div class="gh-tl-card-time">Según SLA del plan</div>
+              <div class="gh-tl-card-title">Despliegue físico</div>
+              <p class="gh-tl-card-text">Presencia en sitio según el SLA contratado: 4 h en Apex, hasta 48 h en Vanguard. Cadena de custodia desde el minuto cero.</p>
+              <ul class="gh-tl-list">
+                <li><i class="ti ti-check"></i> Accidentólogo y CPA Forense en el lugar.</li>
+                <li><i class="ti ti-check"></i> Cadena de custodia y preservación de evidencia.</li>
+                <li><i class="ti ti-check"></i> Riesgo penal directivo neutralizado.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:0.67rem;color:rgba(255,255,255,0.26);margin-top:1.2rem;">* El tiempo de despliegue físico depende del SLA del plan contratado.</p>
+      </div>
+
+      <div class="sec-divider"></div>
+      <div class="lbl">Escenarios reales</div>
+      <h3 class="h2">El costo de no actuar</h3>
+      <p class="sub">Cifras del mercado panameño — no hipótesis.</p>
+      <div class="scen-grid">
+        <div class="scen">
+          <div class="scen-head"><h4>Inspección MITRADEL sorpresiva</h4><span class="badge">Laboral</span></div>
+          <div class="scen-body">
+            <div class="scol bad"><span class="scol-lbl">Sin LEXPROTECT</span>Documentación deficiente. Sin protocolo. Multas inmediatas. La empresa queda registrada como reincidente.<span class="scol-cost">Hasta $30,000</span></div>
+            <div class="scol good"><span class="scol-lbl">Con LEXPROTECT</span>Documentación auditada continuamente. Equipo jurídico en control desde el primer minuto. Sin sanciones.<span class="scol-cost">Costo: $0</span></div>
+          </div>
+        </div>
+        <div class="scen">
+          <div class="scen-head"><h4>Accidente grave en instalaciones</h4><span class="badge">Penal · Laboral</span></div>
+          <div class="scen-body">
+            <div class="scol bad"><span class="scol-lbl">Sin LEXPROTECT</span>Sin perito en los primeros 60 minutos. Escena sin controlar. Responsabilidad máxima asumida automáticamente.<span class="scol-cost">+$78,000 + exposición penal</span></div>
+            <div class="scol good"><span class="scol-lbl">Con LEXPROTECT</span>Despliegue físico según SLA. Accidentólogo y CPA Forense establecen cadena de custodia. Riesgo penal neutralizado.<span class="scol-cost">Riesgo penal: neutralizado</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCREEN 6 · ESPECIALISTAS ══ -->
+<section id="especialistas" class="screen" data-bg="especialistas" style="padding-top:7rem;padding-bottom:4rem;">
+  <div class="screen-bg" style="background:linear-gradient(160deg,#0A1829 0%,#0D1F3C 50%,#0A1829 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 65% 30%,rgba(201,168,76,0.08),transparent 45%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Red de profesionales</div>
+    <h2 class="screen-h lg">50+ especialistas.<br>Una sola <em>llamada.</em></h2>
+    <p class="screen-sub">Abogados, CPA forense, peritos, accidentólogos y psicólogos forenses — coordinados bajo un único SLA institucional.</p>
+    <button class="btn-reveal" onclick="togglePanel('panel-especialistas', this)"><span>Ver la red completa</span><i class="ti ti-chevron-down"></i></button>
+  </div>
+
+  <div class="detail-panel" id="panel-especialistas">
+    <div class="detail-inner">
+      <div class="spec-grid">
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-gavel"></i></div><div><div class="spec-role">Laboral</div><div class="spec-name">Abogado Senior Laboral</div></div></div><div class="spec-desc">Gestión ante MITRADEL, Juntas de Conciliación y Juzgados Seccionales. Auditoría preventiva de nóminas, contratos y décimo tercer mes.</div><div class="spec-tags"><span class="stag">Todos los planes</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-shield-check"></i></div><div><div class="spec-role">Penal</div><div class="spec-name">Penalista Corporativo</div></div></div><div class="spec-desc">Protección directiva ante el Ministerio Público. Control de declaraciones, preservación de evidencia y mando único ante crisis penales.</div><div class="spec-tags"><span class="stag">Todos los planes</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-calculator"></i></div><div><div class="spec-role">Forense</div><div class="spec-name">CPA Contador Forense</div></div></div><div class="spec-desc">Cadena de custodia financiera, cuantificación de pasivos y respaldo ante la DGI y el Poder Judicial.</div><div class="spec-tags"><span class="stag">On-call · todos los planes</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-first-aid-kit"></i></div><div><div class="spec-role">Accidentes Laborales</div><div class="spec-name">Accidentólogo Forense</div></div></div><div class="spec-desc">Preserva la escena ante accidentes graves, establece cadena de custodia y neutraliza la asunción automática de responsabilidad máxima.</div><div class="spec-tags"><span class="stag">On-call · todos los planes</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-brain"></i></div><div><div class="spec-role">Forense</div><div class="spec-name">Psicólogo Forense</div></div></div><div class="spec-desc">Intervención en eventos penales y accidentes graves. Gestión del impacto psicológico y refuerzo de la estrategia legal.</div><div class="spec-tags"><span class="stag">Prestige</span><span class="stag">Apex</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-device-laptop"></i></div><div><div class="spec-role">Tecnología</div><div class="spec-name">Perito Informático Forense</div></div></div><div class="spec-desc">Análisis forense digital ante fraudes internos. Preservación de evidencia digital admisible en proceso judicial bajo Ley 81/2019.</div><div class="spec-tags"><span class="stag">On-call · todos los planes</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-building-bank"></i></div><div><div class="spec-role">Fiscal</div><div class="spec-name">Especialista DGI / Tributario</div></div></div><div class="spec-desc">Fiscalizaciones, alcances, paz y salvos, declaraciones ISR e ITBMS y defensa ante medidas cautelares de la DGI.</div><div class="spec-tags"><span class="stag">Executive</span><span class="stag">Prestige</span><span class="stag">Apex</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-lock"></i></div><div><div class="spec-role">Compliance</div><div class="spec-name">Especialista AML / CFT</div></div></div><div class="spec-desc">Diseño de programas de prevención de lavado. Inscripción en la UAF y reportes de operaciones sospechosas.</div><div class="spec-tags"><span class="stag">Executive</span><span class="stag">Prestige</span><span class="stag">Apex</span></div></div>
+        <div class="spec"><div class="spec-top"><div class="spec-ico"><i class="ti ti-user-star"></i></div><div><div class="spec-role">Dirección Legal</div><div class="spec-name">Director Legal Externo Dedicado</div></div></div><div class="spec-desc">Contraparte institucional integrada en la planificación ejecutiva. Supervisión mensual del estado jurídico y alerta temprana.</div><div class="spec-tags"><span class="stag">Apex</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══ SCREEN 7 · FAQ + CONTACTO ══ -->
+<section id="faq" class="screen" data-bg="faq" style="padding-top:7rem;padding-bottom:4rem;">
+  <div class="screen-bg" style="background:linear-gradient(180deg,#060B14 0%,#0A1829 60%,#060B14 100%);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 50% 20%,rgba(201,168,76,0.08),transparent 45%);"></div>
+  </div>
+  <div class="screen-content">
+    <div class="eyebrow-c">Comenzar</div>
+    <h2 class="screen-h lg">Hablemos de su<br><em>exposición real.</em></h2>
+    <p class="screen-sub">En 30 minutos identificamos los tres riesgos legales más urgentes de su empresa. Sin costo, sin compromiso.</p>
+    <div class="screen-cta">
+      <a href="#contacto-form" class="btn-p">Solicitar diagnóstico gratuito</a>
+      <button class="btn-o" onclick="togglePanel('panel-faq', document.querySelector('.btn-reveal'))" style="cursor:pointer;">Ver preguntas frecuentes</button>
+    </div>
+    <button class="btn-reveal" onclick="togglePanel('panel-faq', this)"><span>FAQ y formulario de contacto</span><i class="ti ti-chevron-down"></i></button>
+  </div>
+
+  <div class="detail-panel" id="panel-faq">
+    <div class="detail-inner">
+      <div class="lbl lbl-c tc">Preguntas frecuentes</div>
+      <h3 class="h2 tc">Lo que más nos preguntan</h3>
+      <p class="sub tc sub-c">Respuestas directas a las dudas más comunes antes de contratar.</p>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿LEXPROTECT reemplaza a mi abogado de confianza?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">No lo reemplaza — lo amplía. LEXPROTECT es una red de 50+ especialistas que opera como infraestructura institucional. Si ya tienes un abogado para asuntos específicos, LEXPROTECT cubre las áreas que ese abogado no atiende de forma preventiva: auditorías laborales, protección penal directiva, emergencias 24/7 y cumplimiento regulatorio.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona el subsidio ante la DGI?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">La membresía califica como gasto necesario para la producción de renta bajo el Artículo 700 del Código Fiscal y el Decreto Ejecutivo No. 170/1993. Al declarar ante la DGI, ese gasto reduce la base gravable del ISR al 25%. El Estado financia efectivamente una cuarta parte del costo de su protección jurídica todos los meses.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si ocurre un evento antes de completar el diagnóstico?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">La cobertura es activa desde el día de la firma — no desde el diagnóstico. Si ocurre un evento en los primeros días, la línea 24/7 está disponible de inmediato y el Protocolo Golden Hour se activa sin excepción.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Los precios publicados son fijos?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">Son tarifas base de referencia. El costo final varía según el nivel de exposición legal, el sector y la peligrosidad regulatoria específica de la empresa. La evaluación sin costo determina el precio exacto.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué diferencia a LEXPROTECT de un retainer tradicional?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">Un retainer actúa cuando lo llaman, cobra por urgencia y no garantiza despliegue. LEXPROTECT previene antes del problema, tiene costo fijo predecible, garantiza despliegue en tiempos definidos por contrato, cubre tres dimensiones simultáneas y no genera pasivo laboral.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿El litigio está incluido en la membresía?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">El litigio no está incluido en la base, pero los miembros acceden a descuento sobre honorarios de representación: desde 15% en Boutique hasta 60% en Apex. Este mismo porcentaje aplica a trámites adicionales — registros MICI, prestaciones, permisos sectoriales, regularizaciones ante CSS o DGI.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué incluye el diagnóstico gratuito?<i class="ti ti-plus faq-icon"></i></button><div class="faq-a">En 30 minutos identificamos los tres riesgos legales más urgentes de la empresa sin compromiso. El asesor revisa el sector, el tamaño y el estado ante MITRADEL y DGI, y presenta el plan con el costo neto real después del subsidio fiscal. No es una presentación de ventas: es un diagnóstico técnico.</div></div>
+      </div>
+
+      <div id="contacto" style="border-top:1px solid var(--bdr2);margin:3rem 0 2rem;"></div>
+      <div id="contacto-form"></div>
+      <div class="lbl lbl-c tc">Comenzar</div>
+      <h3 class="h2 tc">Solicite su diagnóstico de riesgo legal</h3>
+      <p class="sub tc sub-c">En 30 minutos identificamos su exposición real y el plan que corresponde. Sin costo, sin compromiso.</p>
+
+      <div id="contacto-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.8rem;align-items:start;">
+        <div>
+          <a href="tel:+50761293393" class="contact-channel" style="text-decoration:none;">
+            <div class="cc-ico" style="background:var(--gold);"><i class="ti ti-phone" style="color:var(--navy2);font-size:17px;"></i></div>
+            <div><div class="cc-lbl">Asesor comercial</div><div class="cc-val">+507 6129-3393</div></div>
+          </a>
+          <a href="tel:+50763090939" class="contact-channel" style="text-decoration:none;">
+            <div class="cc-ico" style="background:var(--gold);"><i class="ti ti-device-mobile" style="color:var(--navy2);font-size:17px;"></i></div>
+            <div><div class="cc-lbl">Contacto directo</div><div class="cc-val">+507 6309-0939</div></div>
+          </a>
+          <a href="mailto:corporativo@lexprotect.com.pa" class="contact-channel" style="text-decoration:none;">
+            <div class="cc-ico" style="background:var(--gold);"><i class="ti ti-mail" style="color:var(--navy2);font-size:17px;"></i></div>
+            <div><div class="cc-lbl">Correo electrónico</div><div class="cc-val">corporativo@lexprotect.com.pa</div></div>
+          </a>
+          <a href="https://wa.me/50761293393" target="_blank" rel="noopener" class="contact-channel" style="text-decoration:none;">
+            <div class="cc-ico" style="background:#25D366;"><i class="ti ti-brand-whatsapp" style="color:#fff;font-size:17px;"></i></div>
+            <div><div class="cc-lbl">WhatsApp Business</div><div class="cc-val">+507 6129-3393</div></div>
+          </a>
+          <div class="hours-card">
+            <div class="hours-lbl">Horario comercial</div>
+            <div class="hours-row"><span>Lunes — Viernes</span><strong>8:00 a.m. – 6:00 p.m.</strong></div>
+            <div class="hours-row"><span>Sábado</span><strong>9:00 a.m. – 12:00 p.m.</strong></div>
+            <div class="hours-row"><span>Emergencias miembros</span><strong>24 h · 7 días</strong></div>
+          </div>
+          <div class="emergency-badge">
+            <div class="eb-lbl">Emergencias 24/7</div>
+            <div class="eb-txt">Exclusivo para miembros activos. Si ya eres miembro y tienes un evento crítico, llama directamente a tu línea de emergencias asignada.</div>
+          </div>
+        </div>
+
+        <div class="form-box">
+          <h3>Diagnóstico gratuito</h3>
+          <div class="form-sub">Completa el formulario y te contactamos en menos de 2 horas.</div>
+          <div id="form-success" class="f-success">
+            <i class="ti ti-circle-check"></i>
+            <strong>¡Solicitud enviada!</strong>
+            <span>Un asesor se comunicará contigo en menos de 2 horas.</span>
+          </div>
+          <div id="form-fields">
+            <div class="form-row">
+              <div><label class="f-lbl">Nombre completo *</label><input id="f-nombre" type="text" placeholder="Tu nombre" class="f-input"></div>
+              <div><label class="f-lbl">Teléfono / WhatsApp *</label><input id="f-tel" type="tel" placeholder="+507 6000-0000" class="f-input"></div>
+            </div>
+            <div class="form-col"><label class="f-lbl">Correo electrónico</label><input id="f-correo" type="email" placeholder="nombre@empresa.com" class="f-input"></div>
+            <div class="form-col"><label class="f-lbl">Nombre de la empresa *</label><input id="f-empresa" type="text" placeholder="Razón social o nombre comercial" class="f-input"></div>
+            <div class="form-row">
+              <div><label class="f-lbl">Sector de actividad *</label><select id="f-sector" class="f-input"><option value="">Seleccionar…</option><option>Comercial / Retail</option><option>Construcción / Ingeniería</option><option>Servicios / Gastronomía</option><option>Tecnología / Fintech</option><option>Industrial / Logística</option><option>Salud / Clínicas</option><option>Otro</option></select></div>
+              <div><label class="f-lbl">Número de empleados *</label><select id="f-empleados" class="f-input"><option value="">Seleccionar…</option><option>1 – 4 (Plan Boutique)</option><option>5 – 20 (Plan Vanguard)</option><option>21 – 40 (Plan Executive)</option><option>41 – 70 (Plan Prestige)</option><option>71 – 150 (Plan Apex)</option></select></div>
+            </div>
+            <div class="form-col" style="margin-bottom:1.3rem;"><label class="f-lbl">Contacto preferido *</label><select id="f-contacto" class="f-input"><option value="">Seleccionar…</option><option>Llamada telefónica</option><option>WhatsApp</option><option>Correo electrónico</option></select></div>
+            <div id="form-error" class="f-error">Por favor completa todos los campos antes de enviar.</div>
+            <div class="form-btns">
+              <button class="btn-wa" onclick="enviarWhatsApp()"><i class="ti ti-brand-whatsapp" style="font-size:16px;"></i> Enviar por WhatsApp</button>
+              <button class="btn-em" onclick="enviarEmail()"><i class="ti ti-mail" style="font-size:16px;"></i> Enviar por correo</button>
+            </div>
+            <div class="f-privacy">Sus datos son confidenciales · Art. 78 Código Judicial de Panamá</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA STRIP ══ -->
+<div class="cta-strip">
+  <h3>Su empresa merece operar sin miedo a lo inesperado.</h3>
+  <p>No somos la firma con más recursos. Somos la protección real que su empresa necesita, todos los días del año.</p>
+  <div class="cta-row">
+    <a href="tel:+50761293393" class="btn-dark"><i class="ti ti-phone"></i> Llamar ahora</a>
+    <a href="#contacto" class="btn-ghost">Diagnóstico gratuito</a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer-exp">
+  <div class="footer-exp-grid">
+    <div class="footer-col">
+      <div class="footer-brand">LEXPROTECT</div>
+      <p>H&amp;M Abogados · MAVAC Abogados<br>Membresía Jurídica Preventiva · Panamá.</p>
+      <p style="font-style:italic;color:rgba(201,168,76,0.5);margin-top:0.55rem;">"La certeza no se improvisa. Se ingenia."</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="tel:+50761293393">+507 6129-3393</a>
+      <a href="tel:+50763090939">+507 6309-0939</a>
+      <a href="mailto:corporativo@lexprotect.com.pa">corporativo@lexprotect.com.pa</a>
+      <a href="https://wa.me/50761293393" target="_blank" rel="noopener">WhatsApp Business</a>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <p>Lun — Vie · 8:00 a.m. – 6:00 p.m.</p>
+      <p>Sáb · 9:00 a.m. – 12:00 p.m.</p>
+      <p>Emergencias · 24/7 miembros</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#planes">Planes</a>
+      <a href="#golden">Golden Hour</a>
+      <a href="#especialistas">Especialistas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span style="font-size:0.68rem;color:rgba(255,255,255,0.22);">H&amp;M Abogados · MAVAC Abogados · República de Panamá · 2026</span>
+    <span style="font-size:0.68rem;color:rgba(255,255,255,0.22);">Confidencial · Art. 78 Código Judicial de Panamá</span>
+  </div>
+</footer>
+<script>
+/* ══ NAV SCROLLED STATE ══ */
+var navEl = document.getElementById('mainNav');
+var headerEl = document.getElementById('site-header');
+function updateNav(){
+  if (window.scrollY > 60) navEl.classList.add('scrolled');
+  else navEl.classList.remove('scrolled');
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* ══ DYNAMIC HEADER OFFSET (handles util-bar wrapping on mobile) ══ */
+function setHeaderOffset(){
+  if (!headerEl) return;
+  var h = headerEl.offsetHeight;
+  document.documentElement.style.setProperty('--header-h', h + 'px');
+}
+setHeaderOffset();
+window.addEventListener('resize', setHeaderOffset);
+window.addEventListener('load', setHeaderOffset);
+
+/* ══ CINEMATIC SCREEN REVEAL (IntersectionObserver) ══ */
+var screens = document.querySelectorAll('.screen');
+var screenObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+}, {threshold:0.32});
+screens.forEach(function(s){ screenObserver.observe(s); });
+
+/* ══ DETAIL PANEL TOGGLE ══ */
+function togglePanel(panelId, btn) {
+  var panel = document.getElementById(panelId);
+  if (!panel) return;
+  var willOpen = !panel.classList.contains('open');
+  panel.classList.toggle('open');
+  if (btn) {
+    btn.classList.toggle('open', willOpen);
+    var label = btn.querySelector('span');
+    if (label) {
+      if (willOpen) label.textContent = label.textContent.replace('Ver ', 'Ocultar ').replace('FAQ y formulario de contacto', 'Ocultar FAQ y formulario');
+      else label.textContent = label.dataset.orig || label.textContent;
+    }
+  }
+  if (willOpen) {
+    setTimeout(function(){
+      panel.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 150);
+    if (panelId === 'panel-golden' && typeof ghRunTimeline === 'function') {
+      setTimeout(ghRunTimeline, 350);
+    }
+  }
+}
+
+/* ══ FORM ══ */
+var WA_NUMBER = '50761293393';
+var EMAIL_TO  = 'corporativo@lexprotect.com.pa';
+
+function getFormData() {
+  return {
+    nombre:    document.getElementById('f-nombre').value.trim(),
+    tel:       document.getElementById('f-tel').value.trim(),
+    correo:    document.getElementById('f-correo').value.trim(),
+    empresa:   document.getElementById('f-empresa').value.trim(),
+    sector:    document.getElementById('f-sector').value,
+    empleados: document.getElementById('f-empleados').value,
+    contacto:  document.getElementById('f-contacto').value
+  };
+}
+function validar(d){ return d.nombre && d.tel && d.empresa && d.sector && d.empleados && d.contacto; }
+function mostrarError(show){ document.getElementById('form-error').style.display = show ? 'block' : 'none'; }
+function mostrarExito(){
+  document.getElementById('form-fields').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+function enviarWhatsApp() {
+  var d = getFormData();
+  if (!validar(d)) { mostrarError(true); return; }
+  mostrarError(false);
+  var lines = [
+    '\uD83D\uDEE1\uFE0F *Solicitud de Diagnóstico LEXPROTECT*',
+    '',
+    '\uD83D\uDC64 *Nombre:* ' + d.nombre,
+    '\uD83D\uDCDE *Teléfono:* ' + d.tel
+  ];
+  if (d.correo) lines.push('\u2709\uFE0F *Correo:* ' + d.correo);
+  lines.push('\uD83C\uDFE2 *Empresa:* ' + d.empresa);
+  lines.push('\uD83C\uDFED *Sector:* ' + d.sector);
+  lines.push('\uD83D\uDC65 *Empleados:* ' + d.empleados);
+  lines.push('\u260E\uFE0F *Contacto preferido:* ' + d.contacto);
+  lines.push('');
+  lines.push('Solicito una evaluación de riesgo sin costo.');
+  var msg = lines.join('\n');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  mostrarExito();
+}
+function enviarEmail() {
+  var d = getFormData();
+  if (!validar(d)) { mostrarError(true); return; }
+  mostrarError(false);
+  var subject = 'Diagnóstico gratuito — ' + d.empresa;
+  var lines = [
+    'Solicitud de Diagnóstico LEXPROTECT',
+    '',
+    'Nombre: ' + d.nombre,
+    'Teléfono: ' + d.tel
+  ];
+  if (d.correo) lines.push('Correo: ' + d.correo);
+  lines.push('Empresa: ' + d.empresa);
+  lines.push('Sector: ' + d.sector);
+  lines.push('Empleados: ' + d.empleados);
+  lines.push('Contacto preferido: ' + d.contacto);
+  lines.push('');
+  lines.push('Solicito una evaluación de riesgo sin costo.');
+  var body = lines.join('\n');
+  window.location.href = 'mailto:' + EMAIL_TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  mostrarExito();
+}
+
+window.addEventListener('resize', function(){
+  var g = document.getElementById('contacto-grid');
+  if (g) g.style.gridTemplateColumns = window.innerWidth < 800 ? '1fr' : '1fr 1fr';
+});
+
+/* ══ COVERAGE TABS / ACCORDIONS ══ */
+function showCovTab(name, btn) {
+  document.querySelectorAll('.cov-panel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.cov-tab').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('cov-' + name).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+function toggleCovAcc(btn) {
+  var body = btn.nextElementSibling;
+  var open = btn.classList.contains('open');
+  if (open) { btn.classList.remove('open'); body.classList.remove('open'); }
+  else { btn.classList.add('open'); body.classList.add('open'); }
+}
+
+/* ══ FAQ ══ */
+function toggleFaq(btn) {
+  var a = btn.nextElementSibling;
+  var open = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(function(b){ b.classList.remove('open'); });
+  document.querySelectorAll('.faq-a').forEach(function(x){ x.classList.remove('open'); });
+  if (!open) { btn.classList.add('open'); a.classList.add('open'); }
+}
+
+/* ══ PLAN DETAIL TABS ══ */
+function showDetail(name, btn) {
+  var panel = document.getElementById('panel-planes');
+  if (panel && !panel.classList.contains('open')) {
+    panel.classList.add('open');
+    var rb = document.querySelector('#planes .btn-reveal');
+    if (rb) rb.classList.add('open');
+  }
+  document.querySelectorAll('.plan-detail').forEach(function(d){ d.classList.remove('on'); });
+  document.querySelectorAll('.pt-btn').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('detail-' + name).classList.add('on');
+  if (btn) btn.classList.add('on');
+  var t = document.getElementById('detail-' + name);
+  if (t) setTimeout(function(){ t.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 200);
+}
+
+/* ══ GOLDEN HOUR · VERTICAL TIMELINE ══ */
+var ghTimelineEl = document.getElementById('gh-timeline');
+var ghProgressEl = document.getElementById('gh-tl-progress');
+var ghTimelineStarted = false;
+
+function ghActivateNode(idx){
+  var node = document.getElementById('gh-tl-node-' + idx);
+  if (node) node.classList.add('gh-tl-active');
+}
+
+function ghRunTimeline(){
+  if (ghTimelineStarted) return;
+  ghTimelineStarted = true;
+  if (!ghProgressEl || !ghTimelineEl) return;
+
+  var duration = 2400;
+  var trackHeight = ghTimelineEl.offsetHeight;
+  var dots = [
+    document.getElementById('gh-tl-node-1'),
+    document.getElementById('gh-tl-node-2'),
+    document.getElementById('gh-tl-node-3')
+  ];
+
+  requestAnimationFrame(function(){
+    ghProgressEl.style.height = '100%';
+  });
+
+  dots.forEach(function(node, i){
+    if (!node) return;
+    var dotEl = node.querySelector('.gh-tl-dot');
+    var offsetTop = dotEl ? dotEl.offsetTop + node.offsetTop : node.offsetTop;
+    var pct = trackHeight > 0 ? Math.min(offsetTop / trackHeight, 1) : (i / 2);
+    setTimeout(function(){ ghActivateNode(i + 1); }, pct * duration);
+  });
+}
+
+var ghTimelineObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting) ghRunTimeline();
+  });
+}, {threshold:0.15});
+if (ghTimelineEl) ghTimelineObserver.observe(ghTimelineEl);
+
+/* ══ ANCHOR LINKS: open relevant panel before scrolling ══ */
+var anchorPanelMap = {
+  'cobertura': 'panel-cobertura',
+  'planes': 'panel-planes',
+  'golden': 'panel-golden',
+  'especialistas': 'panel-especialistas',
+  'faq': 'panel-faq',
+  'contacto': 'panel-faq'
+};
+document.querySelectorAll('a[href^="#"]').forEach(function(link){
+  link.addEventListener('click', function(e){
+    var id = link.getAttribute('href').slice(1);
+    var panelId = anchorPanelMap[id];
+    if (panelId) {
+      var panel = document.getElementById(panelId);
+      if (panel && !panel.classList.contains('open')) {
+        panel.classList.add('open');
+        var section = panel.closest('.screen');
+        var rb = section ? section.querySelector('.btn-reveal') : null;
+        if (rb) rb.classList.add('open');
+        if (panelId === 'panel-golden' && typeof ghRunTimeline === 'function') {
+          setTimeout(ghRunTimeline, 500);
+        }
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
